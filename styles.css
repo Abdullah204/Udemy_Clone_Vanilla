@@ -1,0 +1,310 @@
+/* reset */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0px;
+  font-family: sans, sf pro text, -apple-system, BlinkMacSystemFont, Roboto,
+    segoe ui, Helvetica, Arial, sans-serif, apple color emoji, segoe ui emoji,
+    segoe ui symbol;
+}
+
+.navbar {
+  width: 100vw;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 5px;
+  box-shadow: 0 2px 4px #00000014, 0 4px 12px #00000014;
+}
+
+.fa-bars.baricon {
+  display: none;
+}
+
+.fa-cart-shopping:hover,
+.teach:hover,
+.business:hover,
+.categs:hover {
+  color: indigo;
+}
+
+.search-form {
+  flex: 1;
+  display: flex;
+  gap: 1rem;
+  border: 1px solid #1c1d1f;
+  border-radius: 9999px;
+  background-color: #f7f9fa;
+  padding: 10px 20px 10px 20px;
+}
+
+.input-field {
+  background-color: #f7f9fa;
+  border: 0px;
+  flex: 1;
+}
+
+.sign-up {
+  align-self: center;
+  color: white;
+  background-color: black;
+  padding: 10px;
+
+  font-weight: 700;
+  float: right;
+}
+
+.login {
+  align-self: center;
+  padding: 10px;
+
+  border: solid 1px black;
+  font-weight: 700;
+  float: right;
+}
+
+.login:hover,
+.fa-globe:hover {
+  background-color: #d1d7dc;
+}
+
+.fa-globe {
+  padding: 10px;
+  margin-right: 10px;
+  border: solid 1px black;
+}
+
+.icon-container {
+  padding: 3px;
+}
+
+.logo-container {
+  margin: 22px;
+  margin-right: 10px;
+}
+.smaller-clock {
+  display: none;
+}
+
+.header-container {
+  max-width: 1430px;
+  margin: 0 auto;
+}
+.clockimg {
+  max-width: 100%;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  max-width: 1430px;
+  margin: 0 auto 4.8rem;
+}
+
+.header-text {
+  position: absolute;
+  margin: 45px 72px;
+  padding: 50px;
+  width: 420px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 8%);
+}
+
+.header-title {
+  font-family: SuisseWorks, Georgia, Times, times new roman, serif,
+    apple color emoji, segoe ui emoji, segoe ui symbol;
+  font-size: xx-large;
+  font-weight: 700;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.footer {
+  padding: 5px;
+}
+.learning-fields {
+  padding: 5px;
+}
+.field-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
+}
+
+.field-list > li {
+  color: #6a6f73;
+  font-weight: bold;
+}
+
+li:hover {
+  color: black;
+}
+
+.field-list > .selected {
+  color: black;
+}
+
+.field-courses {
+  border: 1px #d1d7dc solid;
+  padding: 3.2rem;
+  margin: 20px;
+}
+
+.field-description {
+  overflow: hidden;
+  width: 100%px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.explore-python {
+  display: inline-block;
+  border: 1px black solid;
+  padding: 10px;
+  background-color: white;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.explore-python:hover {
+  background-color: #0000000a;
+}
+
+.course {
+  margin-top: 15px;
+  width: 240px;
+  margin-right: 15px;
+}
+.course > img:hover {
+  opacity: 0.7;
+}
+
+.course-title {
+  margin: 5px 0px;
+}
+
+.course-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.instructor {
+  color: #6a6f73;
+  margin: 5px 0px;
+}
+
+.raters-number {
+  color: #6a6f73;
+}
+
+.fa-star,
+.fa-star-half {
+  color: #e59819;
+}
+
+.rating {
+  font-weight: bolder;
+  color: #b4690e;
+}
+
+.rating-container {
+  margin: 10px 0px;
+}
+
+.new-price {
+  font-weight: bold;
+}
+
+.old-price {
+  color: #6a6f73;
+  text-decoration: line-through;
+}
+
+.price-container {
+  margin-bottom: 15px;
+}
+
+.best-seller {
+  font-weight: bold;
+  background-color: #eceb98;
+  color: #3d3c0a;
+  padding: 5px;
+}
+
+.course > img {
+  width: 240px;
+}
+
+@media only screen and (max-width: 900px) {
+  .fa-bars.baricon {
+    display: flex;
+    padding-left: 20px;
+  }
+
+  .clockimg {
+    display: none;
+  }
+  .smaller-clock {
+    display: inline-block;
+    max-width: 100%;
+  }
+  .logo-container {
+    margin-left: auto;
+    padding-right: 30px;
+  }
+  .header-container {
+    width: 100%;
+    max-width: 786px;
+  }
+  .header-text {
+    position: relative;
+    width: 100%;
+    /* max-width: 786px; */
+    margin: 0px 0px;
+  }
+  .login {
+    display: none;
+  }
+
+  .sign-up {
+    display: none;
+  }
+
+  .fa-globe {
+    display: none;
+  }
+
+  .search-form {
+    display: none;
+  }
+
+  .categs {
+    display: none;
+  }
+
+  .fa-cart-shopping {
+    display: none;
+  }
+
+  .icon-container {
+    display: none;
+  }
+
+  .business {
+    display: none;
+  }
+
+  .teach {
+    display: none;
+  }
+}
