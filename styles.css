@@ -42,6 +42,9 @@ body {
   padding: 10px 20px 10px 20px;
 }
 
+.fa-magnifying-glass {
+  padding-top: 4px;
+}
 .input-field {
   background-color: #f7f9fa;
   border: 0px;
