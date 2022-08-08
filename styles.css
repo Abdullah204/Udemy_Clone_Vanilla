@@ -12,7 +12,7 @@ body {
     segoe ui symbol;
 }
 
-.navbar {
+nav {
   width: 100vw;
   display: flex;
   gap: 1rem;
@@ -93,7 +93,7 @@ body {
   display: none;
 }
 
-.header-container {
+.body-container {
   max-width: 1430px;
   margin: 0 auto;
 }
@@ -120,8 +120,13 @@ body {
 .header-title {
   font-family: SuisseWorks, Georgia, Times, times new roman, serif,
     apple color emoji, segoe ui emoji, segoe ui symbol;
-  font-size: xx-large;
+  font-size: x-large;
   font-weight: 700;
+  margin-top: 0px;
+}
+
+.header-p {
+  margin-bottom: 0px;
 }
 
 ul {
@@ -129,12 +134,15 @@ ul {
   padding: 0;
   margin: 0;
 }
+
 .footer {
   padding: 5px;
 }
+
 .learning-fields {
   padding: 5px;
 }
+
 .field-list {
   display: flex;
   flex-wrap: wrap;
@@ -258,7 +266,9 @@ li:hover {
     display: none;
   }
   .smaller-clock {
-    display: inline-block;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     max-width: 100%;
   }
   .logo-container {
