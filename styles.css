@@ -112,6 +112,8 @@ nav {
 
 .clockimg {
   max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .header {
@@ -123,7 +125,7 @@ nav {
 
 .header-text {
   position: absolute;
-  margin: 45px 72px;
+  margin: 45px 90px;
   padding: 50px;
   width: 420px;
   background-color: white;
