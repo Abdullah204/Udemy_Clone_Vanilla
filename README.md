@@ -4,7 +4,7 @@ to run the project you need to put the json file on a local server and fetch it.
 # steps:   
 1 - run the following command in the terminal :   
 npm install -g json-server  
-2- navigate to project directory.  
+2- navigate to project directory (in the terminal).  
 3- run the following command in the terminal :   
 json-server --watch db.json    
 
