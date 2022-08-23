@@ -1,5 +1,6 @@
-let allCourses = [];
+let allCourses = []; // will be saving course data fetched for all tabs
 let keys = ["python", "excel", "web", "js", "ds", "aws", "drawing"];
+
 /** @ description the function that fetches courses from the server (local) and renders it into the page
  * @ param id id of active carousel used to check if we are searching in this carousel or not
  * @ param ss search string taken from search bar
@@ -66,17 +67,6 @@ const fetchCourses = async (id, ss) => {
 };
 fetchCourses("start", "ss");
 
-const searchForm = document.getElementsByClassName("search-form")[0];
-searchForm.addEventListener("submit", search);
-
-function search(event) {
-  event.preventDefault();
-  // get key from input
-  ss = document.getElementsByClassName("input-field")[0].value;
-  id = document.getElementsByClassName("tab-pane active")[0].id + "";
-  fetchCourses(id, ss);
-}
-
 function numberWithCommas(x) {
   x = x.toString();
   var pattern = /(-?\d+)(\d{3})/;
@@ -115,11 +105,61 @@ function createCourseElement(course) {
 </div>
 ${bs}</div>`;
 }
-/** "imgurl": "imgs/python1.jpeg",
-      "title": "Learn Python: The Complete Python Programming Course",
-      "author": "Avinash Jain , The Codex",
-      "rating": "4.4",
-      "raters_no": "1284",
-      "newPrice": "199.99",
-      "oldPrice": "679.99",
-      "isBestSeller": "True"*/
+
+const searchForm = document.getElementsByClassName("search-form")[0];
+searchForm.addEventListener("submit", search);
+
+function search(event) {
+  event.preventDefault();
+  // get key from input
+  ss = document.getElementsByClassName("input-field")[0].value.toLowerCase();
+
+  a = document.getElementsByClassName("tab-pane active")[0].id; // get id of currently selected  tab
+  b = document.getElementsByClassName(`carousel-inner-${a}`)[0]; // get it's corresponding inner carousel
+
+  b.innerHTML = ""; // clear it
+  c = allCourses[a]; // get courses related to that tab
+
+  let first = true;
+
+  for (let x of c) {
+    // loop on these courses
+    newCourse = createCourseElement(x);
+    courseContainer = document.createElement("div");
+    courseContainer.className += " carousel-item";
+    courseContainer.className += " carousel-item" + a;
+    courseContainer.innerHTML = newCourse;
+    ctitle = x.title.toLowerCase();
+    if (ctitle.includes(ss)) {
+      // only add those satisfying search string
+      if (first) {
+        // give active to first course
+        courseContainer.className += " active";
+        first = false;
+      }
+      document
+        .getElementsByClassName("carousel-inner-" + a)[0]
+        .appendChild(courseContainer);
+    }
+  }
+
+  let items = document.querySelectorAll(".carousel .carousel-item" + a);
+
+  items.forEach((el) => {
+    const minPerSlide = Math.min(
+      document.getElementsByClassName("carousel-inner-" + a)[0].childNodes
+        .length,
+      5
+    );
+    let next = el.nextElementSibling;
+    for (var i = 1; i < minPerSlide; i++) {
+      if (!next) {
+        // wrap carousel by using first child
+        next = items[0];
+      }
+      let cloneChild = next.cloneNode(true);
+      el.appendChild(cloneChild.children[0]);
+      next = next.nextElementSibling;
+    }
+  });
+}
