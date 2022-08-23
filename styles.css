@@ -393,13 +393,13 @@ ul.categories-list {
   margin: 0 auto;
 }
 
-@media only screen and (max-width: 1124px) {
+@media only screen and (max-width: 1144px) {
   .business {
     display: none;
   }
 }
 
-@media only screen and (max-width: 988px) {
+@media only screen and (max-width: 1005px) {
   .teach {
     display: none;
   }
