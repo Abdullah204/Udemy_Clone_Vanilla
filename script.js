@@ -2,12 +2,9 @@ let allCourses = []; // will be saving course data fetched for all tabs
 let keys = ["python", "excel", "web", "js", "ds", "aws", "drawing"];
 
 /** @ description the function that fetches courses from the server (local) and renders it into the page
- * @ param id id of active carousel used to check if we are searching in this carousel or not
- * @ param ss search string taken from search bar
+ * also it saves the data in the json file in allCourses to use it in searching
  */
-const fetchCourses = async (id, ss) => {
-  ss = ss.toLowerCase();
-
+const fetchCourses = async () => {
   let courses = null;
   for (let key of keys) {
     // get json file
@@ -32,15 +29,13 @@ const fetchCourses = async (id, ss) => {
       courseContainer.className += " carousel-item" + key;
       courseContainer.innerHTML = newCourse;
       ctitle = x.title.toLowerCase();
-      if (id === "start" || id !== key || (id === key && ctitle.includes(ss))) {
-        if (first) {
-          courseContainer.className += " active";
-          first = false;
-        }
-        document
-          .getElementsByClassName("carousel-inner-" + key)[0]
-          .appendChild(courseContainer);
+      if (first) {
+        courseContainer.className += " active";
+        first = false;
       }
+      document
+        .getElementsByClassName("carousel-inner-" + key)[0]
+        .appendChild(courseContainer);
     }
     allCourses[key] = arr;
     let items = document.querySelectorAll(".carousel .carousel-item" + key);
@@ -65,18 +60,22 @@ const fetchCourses = async (id, ss) => {
   }
   return courses;
 };
-fetchCourses("start", "ss");
+fetchCourses();
 
+// description : return the number with thousand comma e.g. : 1284 --> 1,284
+//@ param x : the number
 function numberWithCommas(x) {
-  x = x.toString();
   var pattern = /(-?\d+)(\d{3})/;
   while (pattern.test(x)) x = x.replace(pattern, "$1,$2");
   return x;
 }
 
+//description : returns html of course element
+// @param course : course data (id , url , .. etc) in object format
 function createCourseElement(course) {
   let ratingStars = "";
   let bs = "";
+  let rNumber = numberWithCommas(course.raters_no);
   if (course.isBestSeller == "True") {
     bs = `
     <span class="best-seller">Bestseller</span>
@@ -97,7 +96,7 @@ function createCourseElement(course) {
 <div class="rating-container">
   <span class="rating">${course.rating}</span>
   ${ratingStars}
-  <span class="raters-number"> (${course.raters_no}) </span>
+  <span class="raters-number"> (${rNumber}) </span>
 </div>
 <div class="price-container">
   <span class="new-price">E£${course.newPrice} </span>
@@ -109,6 +108,8 @@ ${bs}</div>`;
 const searchForm = document.getElementsByClassName("search-form")[0];
 searchForm.addEventListener("submit", search);
 
+// description : search function that filters courses using search string in current tab
+// @param : event
 function search(event) {
   event.preventDefault();
   // get key from input
